@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Site</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="images/1200px-Red_circle.svg.png" type="image/x-icon">
+</head>
+
+<body class="container" style="background-color: lightslategray;">
+    <h1 class="text-center" style="color: white;">Hello-API</h1>
+    <p class="text-center">Hello ,I am learning about API working</p>
+    <b>
+        <h1 style="color: white;">All user Name:</h1>
+    </b>
+    <h3 id="user_list">
+
+    </h3>
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(json => displayusername(json))
+
+        function displayusername(json) {
+            const username = json.map(user => user.username);
+            const user = document.getElementById('user_list');
+            username.map(name => {
+                let list = document.createElement('li');
+                list.innerText = name;
+                user.appendChild(list);
+            }
+            );
+        }
+    </script>
+</body>
+
+</html>
